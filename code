@@ -1,0 +1,45 @@
+package supreet;
+
+class supreet {
+    String name;
+    double salary;
+
+    supreet(String name, double salary) {
+        if (name == null || name.isEmpty())
+            throw new IllegalArgumentException("Name cannot be empty!");
+
+        if (salary < 0)
+            throw new IllegalArgumentException("Salary cannot be negative!");
+
+        this.name = name;
+        this.salary = salary;
+    }
+
+    void work() {
+        System.out.println(name + " is working.");
+    }
+}
+
+class Manager extends supreet {
+    String department;
+
+    Manager(String name, double salary, String department) {
+        super(name, salary);
+        this.department = department;
+    }
+
+    void work() {
+        System.out.println("Manager " + name + " is helping the " + department + " department.");
+    }
+
+    public static void main(String[] args) {
+        try {
+            Manager m1 = new Manager("Supreet", 250000, "IT");
+            m1.work();
+
+            Manager m2 = new Manager("yash", -10, "Sales");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
